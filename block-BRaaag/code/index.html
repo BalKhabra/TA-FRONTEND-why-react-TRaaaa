@@ -60,16 +60,10 @@
       function createUI() {
         let ui = allMovies.map((movie, index) => {
           return (
-            <li className="movie">
-              <input
-                data-index={index}
-                type="checkbox"
-                checked={movie.status}
-                className="movieStatus"
-              />
-              <p>{movie.movie}</p>
-              <button className="btn-del" data-index={index}>
-                ❌
+            <li key={movie.name}>
+              <label htmlFor={i}>{movie.name}</label>
+              <button id= {i} onClick={handleChange}>
+                {movie.watched ? 'watched' : 'to watch'}
               </button>
             </li>
           );
@@ -90,6 +84,9 @@
         }
         createUI();
       }
+    </script>
+    <script type="text/babel">
+      // JSX code goes here
     </script>
   </body>
 </html>
