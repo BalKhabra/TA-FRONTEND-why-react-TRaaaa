@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Watch List App</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="movie-list-container">
+        <h1>Movie Watch List App</h1>
+        <input
+          class="movie-input"
+          type="text"
+          name="movie"
+          placeholder="Enter the movie name!"
+        />
+        <ul class="movie-list">
+          <!-- <li class="movie">
+            <input type="checkbox" />
+            <p>Forest Gump</p>
+            <button>❌</button>
+          </li>
+          <li class="movie">
+            <input type="checkbox" />
+            <p>Forest Gump</p>
+            <button>❌</button>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@17/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      // JSX code goes here
+      const movieInput = document.querySelector(".movie-input");
+      const movieList = document.querySelector(".movie-list");
+      const allMovies = [];
+
+      function handleMovieSubmit(e) {
+        if (e.keyCode === 13) {
+          allMovies.push({
+            movie: e.target.value,
+            status: false,
+          });
+          e.target.value = "";
+          createUI();
+        }
+      }
+
+      function createUI() {
+        let ui = allMovies.map((movie, index) => {
+          return (
+            <li key={movie.name}>
+              <label htmlFor={i}>{movie.name}</label>
+              <button id= {i} onClick={handleChange}>
+                {movie.watched ? 'watched' : 'to watch'}
+              </button>
+            </li>
+          );
+        });
+        ReactDOM.render(ui, movieList);
+      }
+      movieInput.addEventListener("keyup", handleMovieSubmit);
+      movieList.addEventListener("click", (e) => handleClick(e));
+
+      function handleClick(e) {
+        const className = e.target.classList.value;
+        const index = e.target.dataset.index;
+        if (className === "btn-del") {
+          allMovies.splice(index, 1);
+        }
+        if (className === "movieStatus") {
+          allMovies[index].status = !allMovies[index].status;
+        }
+        createUI();
+      }
+    </script>
+    <script type="text/babel">
+      // JSX code goes here
+    </script>
+  </body>
+</html>
