@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React News App</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      let fruits = [
+        { id: "apple", value: "🍎 apple" },
+        { id: "orange", value: "🍊 orange" },
+        { id: "grape", value: "🍇 grape" },
+        { id: "pear", value: "🍐 pear" },
+      ];
+
+      function handleClick() {
+        alert("Hello React Event");
+      }
+      function handleClick1() {
+        alert(`To learn React use https://reactjs.org
+React and ReactDOM works together
+Babel helps in writing JSX
+        `);
+      }
+      function handleClickOnName(name) {
+        alert(`Hello ${name}`);
+      }
+
+      function handleFruitClick(name) {
+        alert(`Hello ${name}`);
+      }
+      function App() {
+        return (
+          <>
+            <button className="btn" onClick={handleClick}>
+              click Me
+            </button>
+
+            <button onClick={handleClick1}>How can I help you?</button>
+            <button onClick={() => handleClickOnName("Arya")}>Arya</button>
+            <button onClick={() => handleClickOnName("John")}>John</button>
+            <button onClick={() => handleClickOnName("Bran")}>Bran</button>
+            <Stark />
+            {fruits.map((fruit) => {
+              return (
+                <button
+                  onClick={() => handleFruitClick(fruit.id)}
+                  key={fruit.id}
+                >
+                  {fruit.value}
+                </button>
+              );
+            })}
+          </>
+        );
+      }
+
+      class Stark extends React.Component {
+        render() {
+          return (
+            <>
+              <button onClick={() => handleClickOnName("Arya")}>Arya</button>
+              <button onClick={() => handleClickOnName("John")}>John</button>
+              <button onClick={() => handleClickOnName("Bran")}>Bran</button>
+            </>
+          );
+        }
+      }
+
+      ReactDOM.render(<App />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
